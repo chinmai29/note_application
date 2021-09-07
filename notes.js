@@ -2,7 +2,7 @@ const fs = require('fs');
 const chalk = require('chalk');
 
 const addNote = function(title, body){
-    const notes = loadNotes();
+    const notes = loadNotes(); //read all existing notes from the file before adding 
     const duplicateNotes = notes.filter(function (note) {
         return note.title === title;
     });
@@ -12,10 +12,10 @@ const addNote = function(title, body){
             body: body
         })
         saveNotes(notes);
-        console.log('\nNew Note Added Successfully!!!\n');
+        console.log('\nNew Note Created!\n');
     }
     else{
-        console.log("\nNote Title already existed!!!\n");
+        console.log("\nTitle already taken!\n");
     }
 }
 
@@ -31,7 +31,7 @@ const removeNote = function(title){
         saveNotes(notesToKeep)
     }
     else{
-        console.log(chalk.red.inverse('No note found'));
+        console.log(chalk.red.inverse('Note not found!'));
     }
 
 }
